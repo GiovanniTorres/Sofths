@@ -1,0 +1,22 @@
+<?php
+require "Connection.php" ;
+class SearchModel extends Connection {
+	public function set () {}
+
+	public function get ($searching = "") {
+		$this->query = " SELECT * FROM categories WHERE category LIKE '%$searching%' "  ;
+		$this->get_query () ;
+
+		if ($this->rows == null) {
+				$data[] = null ;
+		} else {
+			foreach ($this->rows as $key => $value) {
+				$data[$key] = $value ;
+			}
+		}
+		
+		return $data ;
+	}		
+
+	public function del () {}
+}
